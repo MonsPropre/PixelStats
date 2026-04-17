@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.baldy.pixelstats.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "pixelstats.refmap.json",
+  "mixins": [
+    "ScreenHelperMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
