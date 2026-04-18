@@ -117,6 +117,8 @@ tasks.named('processResources', ProcessResources).configure {
 tasks.named('jar', Jar).configure {
     destinationDirectory.set(file("C:/Users/elazi/AppData/Roaming/ModrinthApp/profiles/TEST/mods"))
 
+    archiveFileName.set("${mod_name}-${mapping_version}-${mod_version}.jar")
+
     doFirst {
         def outputFile = archiveFile.get().asFile
         if (outputFile.exists()) {

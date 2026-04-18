@@ -6,6 +6,7 @@ import com.pixelmonmod.pixelmon.api.pokemon.species.gender.Gender;
 import com.pixelmonmod.pixelmon.api.registries.PixelmonForms;
 import com.pixelmonmod.pixelmon.client.gui.Resources;
 import com.pixelmonmod.pixelmon.client.gui.ScreenHelper;
+import com.pixelmonmod.pixelmon.client.gui.inventory.InventoryPixelmonExtendedScreen;
 import net.baldy.pixelstats.client.ClientIvsCache;
 import net.baldy.pixelstats.network.NetworkHandler;
 import net.baldy.pixelstats.network.RequestPokemonIvsPacket;
@@ -13,6 +14,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
@@ -162,14 +164,19 @@ public abstract class ScreenHelperMixin {
 		int screenWidth = mc.getWindow().getGuiScaledWidth();
 		int screenHeight = mc.getWindow().getGuiScaledHeight();
 
-		int offsetX = 5;
+		boolean isInventoryLike = mc.screen instanceof InventoryPixelmonExtendedScreen;
 
-		int left = x + 12 + offsetX;
-		if (left + sharedWidth > screenWidth) {
-			left -= 28 + sharedWidth;
-		}
-		if (left < 4) {
-			left = 4;
+		int left;
+		if (isInventoryLike) {
+			left = x - sharedWidth - 8;
+			if (left < 4) {
+				left = x + 12 + 5;
+				if (left + sharedWidth > screenWidth) left = screenWidth - sharedWidth - 4;
+			}
+		} else {
+			left = x + 12 + 5;
+			if (left + sharedWidth > screenWidth) left -= 28 + sharedWidth;
+			if (left < 4) left = 4;
 		}
 
 		int baseTop = y - 12;
