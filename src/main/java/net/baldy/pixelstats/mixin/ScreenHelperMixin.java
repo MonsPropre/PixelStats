@@ -14,7 +14,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.inventory.InventoryScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
@@ -45,7 +44,7 @@ public abstract class ScreenHelperMixin {
 		}
 
 		boolean sneak = Screen.hasShiftDown();
-		boolean showMoreInfo = false;
+		boolean showMoreInfo;
 
 		String namePlain = pokemon.getFormattedDisplayName().getString();
 
