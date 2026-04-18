@@ -43,7 +43,7 @@ public abstract class ScreenHelperMixin {
 		}
 
 		boolean sneak = Screen.hasShiftDown();
-		boolean showMoreInfo = cached != null && cached.valid && sneak;
+		boolean showMoreInfo = false;
 
 		String namePlain = pokemon.getFormattedDisplayName().getString();
 
@@ -73,13 +73,17 @@ public abstract class ScreenHelperMixin {
 		String natureLine = null;
 		String happinessLine = null;
 
-		if (cached == null || !cached.valid) {
+		if (cached == null) {
 			showMoreInfo = false;
 			bottomLine = null;
-		} else if (showMoreInfo) {
+		} else if (!cached.valid) {
+			showMoreInfo = false;
+			bottomLine = TextFormatting.GRAY + "Loading...";
+		} else if (sneak) {
+			showMoreInfo = true;
+
 			int total = cached.total;
 			int percent = (int) Math.round((cached.total / 186.0) * 100.0);
-
 			TextFormatting totalColor = cached.hyperTrained ? TextFormatting.YELLOW : TextFormatting.AQUA;
 
 			ivsLine = TextFormatting.GOLD + "IVs: "
@@ -112,7 +116,9 @@ public abstract class ScreenHelperMixin {
 
 			happinessLine = TextFormatting.LIGHT_PURPLE + I18n.get("gui.screenpokechecker.happiness") + ": "
 				+ TextFormatting.WHITE + friendship + "/255";
+
 		} else {
+			showMoreInfo = false;
 			bottomLine = TextFormatting.GRAY + "Sneak for more info";
 		}
 

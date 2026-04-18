@@ -10,7 +10,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-D:\Users\elazi\Documents\GitHub\PixelStats
+
 @Mod(PixelStats.MOD_ID)
 public class PixelStats {
 	public static final String MOD_ID = "pixelstats";
@@ -29,6 +29,6 @@ public class PixelStats {
 
 	@SubscribeEvent
 	public void onServerStarting(FMLServerStartingEvent event) {
-		LOGGER.info("PixelStats starting");
+		LOGGER.info("PixelStats Starting");
 	}
 }
