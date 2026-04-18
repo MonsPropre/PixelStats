@@ -6,6 +6,7 @@ import com.pixelmonmod.pixelmon.api.pokemon.species.gender.Gender;
 import com.pixelmonmod.pixelmon.api.registries.PixelmonForms;
 import com.pixelmonmod.pixelmon.client.gui.Resources;
 import com.pixelmonmod.pixelmon.client.gui.ScreenHelper;
+import com.pixelmonmod.pixelmon.client.gui.inventory.CreativeInventoryExtendedScreen;
 import com.pixelmonmod.pixelmon.client.gui.inventory.InventoryPixelmonExtendedScreen;
 import net.baldy.pixelstats.client.ClientIvsCache;
 import net.baldy.pixelstats.network.NetworkHandler;
@@ -163,7 +164,7 @@ public abstract class ScreenHelperMixin {
 		int screenWidth = mc.getWindow().getGuiScaledWidth();
 		int screenHeight = mc.getWindow().getGuiScaledHeight();
 
-		boolean isInventoryLike = mc.screen instanceof InventoryPixelmonExtendedScreen;
+		boolean isInventoryLike = mc.screen instanceof InventoryPixelmonExtendedScreen || mc.screen instanceof CreativeInventoryExtendedScreen;
 
 		int left;
 		if (isInventoryLike) {
